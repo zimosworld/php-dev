@@ -1,0 +1,5 @@
+profiler_output/*
+logs/*
+.idea
+.env
+!.gitkeep

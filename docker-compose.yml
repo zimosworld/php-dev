@@ -1,0 +1,5 @@
+version: '2'
+services:
+  php-dev:
+    build: .
+    image: zimosworld/php-dev:5.6
