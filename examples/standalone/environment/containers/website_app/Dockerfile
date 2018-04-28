@@ -1,4 +1,4 @@
-FROM zimosworld/php-dev:7.0
+FROM zimosworld/php-dev:7.1
 MAINTAINER "Jonathan Zimros <john@zimosworld.com>"
 
 # Add in apache config file
