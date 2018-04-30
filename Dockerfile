@@ -25,6 +25,9 @@ RUN yum remove -y httpd* php* && \
         php71-pecl-zip && \
         yum clean all
 
+# Add in entry point file
+ADD docker-entrypoint.sh /docker-entrypoint.sh
+
 #Fix an issue with nano
 RUN export TERM=xterm
 
@@ -42,4 +45,4 @@ WORKDIR /var/www/html
 
 EXPOSE 80 9000
 
-ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
