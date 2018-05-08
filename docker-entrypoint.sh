@@ -64,14 +64,6 @@ log() {
 	fi
 }
 
-# Test if argument is an integer.
-#
-# @param  mixed
-# @return integer	0: is int | 1: not an int
-isint() {
-	echo "${1}" | grep -Eq '^([0-9]|[1-9][0-9]*)$'
-}
-
 ################################################################################
 # LOGIC
 ################################################################################
@@ -101,7 +93,7 @@ elif [ $HOST_UNAME = "Windows" ]; then
 fi
 
 ### Change User ID (UID) for "$MY_USER" ###
-if [ ! set | grep '^NEW_UID=' >/dev/null 2>&1 ] || [ ! isint "${NEW_UID}" ]; then
+if [[ ! "${NEW_UID}" =~ ^-?[0-9]+$ ]]; then
 	log "info" "\$NEW_UID not set. Keeping default uid of '${MY_USER}'."
 else
     if _user_line="$( getent passwd "${NEW_UID}" )"; then
@@ -117,7 +109,7 @@ else
 fi
 
 ### Change Group ID (GID) for "$MY_GROUP" ###
-if [ set | grep '^NEW_GID=' >/dev/null 2>&1 ] || [ ! isint "${NEW_GID}" ]; then
+if [[ ! "${NEW_GID}" =~ ^-?[0-9]+$ ]]; then
 	log "info" "\$NEW_GID not set. Keeping default gid of '${MY_GROUP}'."
 else
     if _group_line="$( getent group "${NEW_GID}" )"; then
