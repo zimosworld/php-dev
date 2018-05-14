@@ -8,21 +8,21 @@ RUN yum install -y nano wget openssl
 RUN yum remove -y httpd* php* && \
     yum install -y httpd24 \
         mod24_ssl \
-        php55 \
-        php55-cli \
-        php55-common \
-        php55-devel \
-        php55-json \
-        php55-soap \
-        php55-mbstring \
-        php55-mcrypt \
-        php55-mysqlnd \
-        php55-xml \
-        php55-gd \
-        php55-process \
-        php55-pecl-redis \
-        php55-pecl-xdebug \
-        php55-pecl-zip && \
+        php54 \
+        php54-cli \
+        php54-common \
+        php54-devel \
+        php54-json \
+        php54-soap \
+        php54-mbstring \
+        php54-mcrypt \
+        php54-mysqlnd \
+        php54-xml \
+        php54-gd \
+        php54-process \
+        php54-pecl-redis \
+        php54-pecl-xdebug \
+        php54-pecl-zip && \
         yum clean all
 
 # Add in entry point file
@@ -39,7 +39,7 @@ RUN echo "xdebug.profiler_enable_trigger=true" >> /etc/php.ini
 RUN echo "xdebug.profiler_output_dir=\"/var/www/html/environment/profiler_output\"" >> /etc/php.ini
 
 # Update permissions on session folder so we can write to it
-RUN chmod 777 /var/lib/php/5.5/session
+RUN chmod 777 /var/lib/php/session
 
 WORKDIR /var/www/html
 
