@@ -2,4 +2,4 @@ version: '2'
 services:
   php-dev:
     build: .
-    image: zimosworld/php-dev:7.1
+    image: zimosworld/php-dev:5.5
