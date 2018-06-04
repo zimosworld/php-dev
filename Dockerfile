@@ -6,23 +6,23 @@ RUN yum update -y
 RUN yum install -y nano wget openssl
 
 RUN yum remove -y httpd* php* && \
-    yum install -y httpd24 \
-        mod24_ssl \
-        php71 \
-        php71-cli \
-        php71-common \
-        php71-devel \
-        php71-json \
-        php71-soap \
-        php71-mbstring \
-        php71-mcrypt \
-        php71-mysqlnd \
-        php71-xml \
-        php71-gd \
-        php71-process \
-        php71-pecl-redis \
-        php71-pecl-xdebug \
-        php71-pecl-zip && \
+    yum install -y httpd22 \
+        mod22_ssl \
+        php \
+        php-cli \
+        php-common \
+        php-devel \
+        php-json \
+        php-soap \
+        php-mbstring \
+        php-mcrypt \
+        php-mysqlnd \
+        php-xml \
+        php-gd \
+        php-process \
+        php-pecl-redis \
+        php-pecl-xdebug \
+        php-pecl-zip && \
         yum clean all
 
 # Add in entry point file
@@ -39,7 +39,7 @@ RUN echo "xdebug.profiler_enable_trigger=true" >> /etc/php.ini
 RUN echo "xdebug.profiler_output_dir=\"/var/www/html/environment/profiler_output\"" >> /etc/php.ini
 
 # Update permissions on session folder so we can write to it
-RUN chmod 777 /var/lib/php/7.1/session
+RUN chmod 777 /var/lib/php/session
 
 WORKDIR /var/www/html
 
